@@ -49,6 +49,7 @@ __Google Hangout:__ <a href="https://plus.google.com/hangouts/_/gxn3wrea5gdhoo22
 
 The current Marlin dev team consists of:
 
+ - Andreas Hardtung [@AnHardt] - Deutsch, English
  - Scott Lahteine [@thinkyhead] - English
  - [@Wurstnase] - Deutsch, English
  - F. Malpartida [@fmalpartida] - English, Spanish
@@ -60,6 +61,7 @@ The current Marlin dev team consists of:
  - Erik van der Zalm [@ErikZalm]
  - David Braam [@daid]
  - Bernhard Kubicek [@bkubicek]
+ - Richard Wackerbarth [@Wackerbarth] - English
  - Roxanne Neufeld [@Roxy-3DPrintBoard] - English
 
 More features have been added by:
