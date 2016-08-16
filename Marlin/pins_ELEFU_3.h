@@ -1,10 +1,34 @@
 /**
+ * Marlin 3D Printer Firmware
+ * Copyright (C) 2016 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ *
+ * Based on Sprinter and grbl.
+ * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**
  * Elefu RA Board Pin Assignments
  */
 
 #ifndef __AVR_ATmega2560__
-  #error Oops!  Make sure you have 'Arduino Mega' selected from the 'Tools -> Boards' menu.
+  #error "Oops!  Make sure you have 'Arduino Mega' selected from the 'Tools -> Boards' menu."
 #endif
+
+#define BOARD_NAME         "Elefu Ra v3"
 
 #define X_STEP_PIN         49
 #define X_DIR_PIN          13
@@ -36,9 +60,6 @@
 #define E0_DIR_PIN         41
 #define E0_ENABLE_PIN      37
 
-#define SDPOWER            -1
-#define LED_PIN            -1 //Use +12V Aux port for LED Ring
-
 #define FAN_PIN            16 //5V PWM
 
 #define PS_ON_PIN          10 //Set to -1 if using a manual switch on the PWRSW Connector
@@ -55,8 +76,6 @@
 
 #define BEEPER_PIN         36
 
-#define KILL_PIN           -1
-
 // M240  Triggers a camera by emulating a Canon RC-1 Remote
 // Data from: http://www.doc-diy.net/photo/rc-1_hacked/
 #define PHOTOGRAPH_PIN     29
@@ -68,11 +87,7 @@
 
   #define BTN_EN1          14
   #define BTN_EN2          39
-  #define BTN_ENC          15  //the click
-
-  #define BLEN_C            2
-  #define BLEN_B            1
-  #define BLEN_A            0
+  #define BTN_ENC          15
 
 #endif // RA_CONTROL_PANEL
 

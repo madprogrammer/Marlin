@@ -1,4 +1,26 @@
 /**
+ * Marlin 3D Printer Firmware
+ * Copyright (C) 2016 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ *
+ * Based on Sprinter and grbl.
+ * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**
  * Teensy++ 2.0 Breadboard pin assignments (AT90USB1286)
  * Requires the Teensyduino software with Teensy++ 2.0 selected in Arduino IDE!
  * http://www.pjrc.com/teensy/teensyduino.html
@@ -44,13 +66,15 @@
  */
 
 #ifndef __AVR_AT90USB1286__
-  #error Oops!  Make sure you have 'Teensy++ 2.0' selected from the 'Tools -> Boards' menu.
+  #error "Oops!  Make sure you have 'Teensy++ 2.0' selected from the 'Tools -> Boards' menu."
 #endif
 
-#ifndef AT90USBxx_TEENSYPP_ASSIGNMENTS  // use Teensyduino Teensy++2.0 pin assignments instead of Marlin alphabetical.
-  #error  Uncomment #define AT90USBxx_TEENSYPP_ASSIGNMENTS in fastio.h for this config
+#if DISABLED(AT90USBxx_TEENSYPP_ASSIGNMENTS) // use Teensyduino Teensy++2.0 pin assignments instead of Marlin alphabetical.
+  #error "Uncomment #define AT90USBxx_TEENSYPP_ASSIGNMENTS in fastio.h for this config"
   // (or build from command line)
 #endif
+
+#define BOARD_NAME         "Teensy++2.0"
 
 #define LARGE_FLASH        true
 
@@ -71,8 +95,6 @@
 #define E0_ENABLE_PIN      26 // Shared w/x
 
 #define HEATER_0_PIN       15 //  21  // Extruder
-#define HEATER_1_PIN       -1
-#define HEATER_2_PIN       -1
 #define HEATER_BED_PIN     14 // 20  // Bed
 #define FAN_PIN            16 // 22  // Fan
 
@@ -82,23 +104,10 @@
 
 #define TEMP_0_PIN          7 // Extruder / Analog pin numbering
 #define TEMP_BED_PIN        6 // Bed / Analog pin numbering
-#define TEMP_1_PIN         -1
-#define TEMP_2_PIN         -1
 
-#define SDPOWER            -1
-#define SD_DETECT_PIN      -1
 #define SDSS               20 // 8
 #define LED_PIN             6
 #define PS_ON_PIN          27
-#define KILL_PIN           -1
-#define ALARM_PIN          -1
-
-#if DISABLED(SDSUPPORT)
-  // these pins are defined in the SD library if building with SD support
-  #define SCK_PIN         21 // 9
-  #define MISO_PIN        23 // 11
-  #define MOSI_PIN        22 // 10
-#endif
 
 #if ENABLED(ULTIPANEL)
   #define LCD_PINS_RS         8

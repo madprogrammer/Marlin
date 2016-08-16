@@ -1,4 +1,26 @@
-/*
+/**
+ * Marlin 3D Printer Firmware
+ * Copyright (C) 2016 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ *
+ * Based on Sprinter and grbl.
+ * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**
   This code contributed by Triffid_Hunter and modified by Kliment
   why double up on these macros? see http://gcc.gnu.org/onlinedocs/cpp/Stringification.html
 */
@@ -8,7 +30,7 @@
 
 #include <avr/io.h>
 
-/*
+/**
   utility functions
 */
 
@@ -16,7 +38,7 @@
   #define MASK(PIN)  (1 << PIN)
 #endif
 
-/*
+/**
   magic I/O routines
   now you can simply SET_OUTPUT(STEP); WRITE(STEP, 1); WRITE(STEP, 0);
 */
@@ -85,7 +107,7 @@
 // Shorthand
 #define OUT_WRITE(IO, v) { SET_OUTPUT(IO); WRITE(IO, v); }
 
-/*
+/**
   ports and functions
 
   added as necessary or if I feel like it- not a comprehensive list!
@@ -116,7 +138,7 @@
 
   #define DEBUG_LED   AIO5
 
-  /*
+  /**
   pins
   */
 
@@ -455,7 +477,7 @@
   #define OC2B        DIO14
 
   #define DEBUG_LED   DIO0
-  /*
+  /**
   pins
   */
 
@@ -964,7 +986,7 @@
   // change for your board
   #define DEBUG_LED   DIO21
 
-  /*
+  /**
   pins
   */
   #define DIO0_PIN    PINE0
@@ -2025,21 +2047,22 @@
 #endif
 
 #if defined(__AVR_AT90USB1287__) || defined(__AVR_AT90USB1286__) || defined(__AVR_AT90USB646__) || defined(__AVR_AT90USB647__)
-  // SPI
-  #define SCK         DIO9
-  #define MISO        DIO11
-  #define MOSI        DIO10
-  #define SS          DIO8
 
   // change for your board
   #define DEBUG_LED   DIO31 /* led D5 red */
 
-  /*
+  /**
   pins
   */
 
   //#define AT90USBxx_TEENSYPP_ASSIGNMENTS // Use Teensy++ 2.0 assignments
   #ifndef AT90USBxx_TEENSYPP_ASSIGNMENTS // Use traditional Marlin pin assignments
+
+    // SPI
+    #define SCK         DIO9   // 21
+    #define MISO        DIO11  // 23
+    #define MOSI        DIO10  // 22
+    #define SS          DIO8   // 20
 
     #define DIO0_PIN        PINA0
     #define DIO0_RPORT      PINA
@@ -2676,7 +2699,7 @@
 
   #else // AT90USBxx_TEENSYPP_ASSIGNMENTS -- Use Teensyduino Teensy++2.0 assignments.
 
-    /*
+    /**
 
     AT90USB  51 50 49 48 47 46 45 44 10 11 12 13 14 15 16 17 35 36 37 38 39 40 41 42 25 26 27 28 29 30 31 32 33 34 43 09 18 19 01 02 61 60 59 58 57 56 55 54
     Port     A0 A1 A2 A3 A4 A5 A6 A7 B0 B1 B2 B3 B4 B5 B6 B7 C0 C1 C2 C3 C4 C5 C6 C7 D0 D1 D2 D3 D4 D5 D6 D7 E0 E1 E2 E3 E4 E5 E6 E7 F0 F1 F2 F3 F4 F5 F6 F7
@@ -2684,6 +2707,12 @@
     Teensy   28 29 30 31 32 33 34 35 20 21 22 23 24 25 26 27 10 11 12 13 14 15 16 17 00 01 02 03 04 05 06 07 08 09(46*47)36 37 18 19 38 39 40 41 42 43 44 45
              The pins 46 and 47 are not supported by Teensyduino, but are supported below.
     */
+
+    // SPI
+    #define SCK             DIO21 // 9
+    #define MISO            DIO23 // 11
+    #define MOSI            DIO22 // 10
+    #define SS              DIO20 // 8
 
     #define DIO0_PIN PIND0
     #define DIO0_RPORT PIND
@@ -3351,7 +3380,7 @@
   // change for your board
   #define DEBUG_LED   DIO46
 
-  /*
+  /**
   pins
   */
   #define DIO0_PIN    PINE0
@@ -4016,7 +4045,7 @@
 #endif
 
 #ifndef DIO0_PIN
-  #error pins for this chip not defined in arduino.h! If you write an appropriate pin definition and have this firmware work on your chip, please submit a pull request
+  #error "pins for this chip not defined in arduino.h! If you write an appropriate pin definition and have this firmware work on your chip, please submit a pull request"
 #endif
 
 #endif /* _FASTIO_ARDUINO_H */
